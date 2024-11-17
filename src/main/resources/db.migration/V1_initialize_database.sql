@@ -1,11 +1,12 @@
 create table if not exists sm_customer
 (
     id         bigserial
-    constraint pk__sm_customer__id primary key,
-    name       varchar(250)                     not null,
+    constraint pk__sm_customer__id              primary key,
+    name       varchar(150)                     not null,
     email      varchar(200)
-    constraint u__sm_customer__email unique not null,
+    constraint u__sm_customer__email            unique not null,
     address    varchar(300)                     not null,
+    password   varchar(255)                     not null,
     created_at timestamp(0)                     not null,
     updated_at timestamp(0),
     deleted_at timestamp(0)
@@ -14,11 +15,11 @@ create table if not exists sm_customer
 create table if not exists sm_product
 (
     id             bigserial
-    constraint pk__sm_product__id primary key,
-    name           varchar(300)   not null,
-    price          numeric(50, 3) not null,
-    stock_quantity bigserial      not null,
-    created_at     timestamp(0)   not null,
+    constraint pk__sm_product__id               primary key,
+    name           varchar(300)                 not null,
+    price          numeric(50, 3)               not null,
+    stock_quantity bigserial                    not null,
+    created_at     timestamp(0)                 not null,
     updated_at     timestamp(0),
     deleted_at     timestamp(0)
     );
@@ -39,7 +40,7 @@ create table if not exists sm_cart
 create table if not exists sm_cart_item
 (
     id         bigserial
-    constraint pk__sm_cart_item__id primary key,
+    constraint pk__sm_cart_item__id             primary key,
     cart_id    bigint
     constraint fk__sm_cart_item__cart__id references sm_cart,
     product_id bigint
@@ -89,11 +90,11 @@ create table if not exists sm_product_price_history
     updated_at timestamp(0)
     );
 
-insert into sm_customer (id, name, email, address, created_at, updated_at)
+insert into sm_customer (id, name, email, address,password ,created_at, updated_at)
 values
-    (default, 'Alice Smith', 'alice.smith@example.com', '123 Maple Street', CURRENT_TIMESTAMP, null),
-    (default, 'Bob Johnson', 'bob.johnson@example.com', '456 Oak Avenue', CURRENT_TIMESTAMP, null),
-    (default, 'Charlie Brown', 'charlie.brown@example.com', '789 Pine Road', CURRENT_TIMESTAMP, null);
+    (default, 'Alice Smith', 'alice.smith@example.com', '123 Maple Street',1234568 ,CURRENT_TIMESTAMP, null),
+    (default, 'Bob Johnson', 'bob.johnson@example.com', '456 Oak Avenue',1234448, CURRENT_TIMESTAMP, null),
+    (default, 'Charlie Brown', 'charlie.brown@example.com', '789 Pine Road',4556412 ,CURRENT_TIMESTAMP, null);
 
 insert into sm_product (id, name, price, stock_quantity, created_at, updated_at)
 values
