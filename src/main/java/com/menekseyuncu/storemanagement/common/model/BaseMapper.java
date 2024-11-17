@@ -1,4 +1,4 @@
-package com.menekseyuncu.storemanagement.common;
+package com.menekseyuncu.storemanagement.common.model;
 
 import java.util.List;
 

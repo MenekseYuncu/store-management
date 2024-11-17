@@ -11,9 +11,7 @@ import java.time.LocalDateTime;
 @Builder
 public class BaseResponse<T> {
 
-    public static final BaseResponse<Void> SUCCESS = BaseResponse.<Void>builder()
-            .httpStatus(HttpStatus.OK)
-            .isSuccess(true).build();
+    public static final BaseResponse<Void> SUCCESS = createSuccess();
 
     @Builder.Default
     private LocalDateTime time = LocalDateTime.now();
@@ -30,5 +28,12 @@ public class BaseResponse<T> {
                 .httpStatus(HttpStatus.OK)
                 .isSuccess(true)
                 .response(response).build();
+    }
+
+    private static BaseResponse<Void> createSuccess() {
+        return BaseResponse.<Void>builder()
+                .httpStatus(HttpStatus.OK)
+                .isSuccess(true)
+                .build();
     }
 }
