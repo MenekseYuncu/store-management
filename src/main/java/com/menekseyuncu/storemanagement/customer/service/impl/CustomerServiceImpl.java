@@ -46,16 +46,11 @@ class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<CustomerResponse> getAllCustomers() {
-        return customerRepository.findAllByDeletedAtIsNull().stream()
-                .map(customer -> CustomerResponse.builder()
-                        .id(customer.getId())
-                        .name(customer.getName())
-                        .email(customer.getEmail())
-                        .address(customer.getAddress())
-                        .createdAt(customer.getCreatedAt())
-                        .updatedAt(customer.getUpdatedAt())
-                        .build())
-                .toList();
+        List<CustomerEntity> customerEntity = customerRepository.findAllByDeletedAtIsNull().stream().toList();
+
+        List<Customer> customer = customerEntityToDomainMapper.map(customerEntity);
+
+        return customerToCustomerResponseMapper.map(customer);
     }
 
     @Override
