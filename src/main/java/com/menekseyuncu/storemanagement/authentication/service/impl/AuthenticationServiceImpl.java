@@ -5,7 +5,7 @@ import com.menekseyuncu.storemanagement.authentication.controller.request.LoginR
 import com.menekseyuncu.storemanagement.authentication.exception.AuthenticationException;
 import com.menekseyuncu.storemanagement.authentication.exception.EmailAlreadyExistException;
 import com.menekseyuncu.storemanagement.authentication.service.AuthenticationService;
-import com.menekseyuncu.storemanagement.customer.CustomerNotFoundException;
+import com.menekseyuncu.storemanagement.customer.exceptions.CustomerNotFoundException;
 import com.menekseyuncu.storemanagement.customer.controller.request.CustomerCreateRequest;
 import com.menekseyuncu.storemanagement.customer.model.entity.CustomerEntity;
 import com.menekseyuncu.storemanagement.customer.model.mapper.CustomerCreateRequestToCustomerEntityMapper;
@@ -53,7 +53,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Override
     public void changePassword(ChangePasswordRequest changePasswordRequest) {
         CustomerEntity customer = customerRepository.findByEmailAndDeletedAtIsNull(changePasswordRequest.email())
-                .orElseThrow(() -> new CustomerNotFoundException(changePasswordRequest.email()));
+                .orElseThrow(CustomerNotFoundException::new);
 
         if (!passwordEncoder.matches(changePasswordRequest.oldPassword(), customer.getPassword())) {
             throw new AuthenticationException("Old password is incorrect");
