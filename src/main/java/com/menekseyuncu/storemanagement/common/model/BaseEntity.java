@@ -1,13 +1,9 @@
 package com.menekseyuncu.storemanagement.common.model;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -29,10 +25,6 @@ public abstract class BaseEntity {
 
     @Column(name = "deleted_at")
     protected LocalDateTime deletedAt;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     @PrePersist
     public void prePersist() {
