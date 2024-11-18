@@ -6,7 +6,8 @@ target/
 
 .gitignore
 
-db
+db/
+
 ### STS ###
 .apt_generated
 .classpath
