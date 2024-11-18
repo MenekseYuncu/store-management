@@ -12,10 +12,6 @@ public class AuthenticationException extends RuntimeException {
             Authentication failed!
             """;
 
-    public AuthenticationException() {
-        super(DEFAULT_MESSAGE);
-    }
-
     public AuthenticationException(final String message) {
         super(DEFAULT_MESSAGE + " " + message);
     }

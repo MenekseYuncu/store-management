@@ -1,6 +1,5 @@
 package com.menekseyuncu.storemanagement.cart.controller.response;
 
-import com.menekseyuncu.storemanagement.cart.controller.response.CartItemResponse;
 import lombok.Builder;
 
 import java.math.BigDecimal;
