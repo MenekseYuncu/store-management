@@ -46,11 +46,11 @@ class CartController {
         return BaseResponse.SUCCESS;
     }
 
-    @DeleteMapping("/{customerId}")
+    @PostMapping("/{id}/empty")
     public ResponseEntity<BaseResponse<Void>> emptyCart(
-            @PathVariable @Positive Long customerId
+            @PathVariable @Positive Long id
     ) {
-        cartService.emptyCart(customerId);
+        cartService.emptyCart(id);
         return ResponseEntity.ok(BaseResponse.SUCCESS);
     }
 

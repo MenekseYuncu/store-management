@@ -24,6 +24,16 @@ class CustomerServiceImpl implements CustomerService {
     private static final CustomerToCustomerResponseMapper customerToCustomerResponseMapper = CustomerToCustomerResponseMapper.INSTANCE;
     private final CustomerRepository customerRepository;
 
+
+    @Override
+    public List<CustomerResponse> getAllCustomers() {
+        List<CustomerEntity> customerEntity = customerRepository.findAllByDeletedAtIsNull().stream().toList();
+
+        List<Customer> customer = customerEntityToDomainMapper.map(customerEntity);
+
+        return customerToCustomerResponseMapper.map(customer);
+    }
+
     @Override
     public CustomerResponse getCustomerById(Long id) {
         CustomerEntity customerEntity = customerRepository.findByIdAndDeletedAtIsNull(id)
@@ -40,15 +50,6 @@ class CustomerServiceImpl implements CustomerService {
                 .orElseThrow(CustomerNotFoundException::new);
 
         Customer customer = customerEntityToDomainMapper.map(customerEntity);
-
-        return customerToCustomerResponseMapper.map(customer);
-    }
-
-    @Override
-    public List<CustomerResponse> getAllCustomers() {
-        List<CustomerEntity> customerEntity = customerRepository.findAllByDeletedAtIsNull().stream().toList();
-
-        List<Customer> customer = customerEntityToDomainMapper.map(customerEntity);
 
         return customerToCustomerResponseMapper.map(customer);
     }
