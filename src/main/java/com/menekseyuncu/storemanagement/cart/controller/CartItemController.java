@@ -25,6 +25,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/cart-item")
 class CartItemController {
+
     private final CartItemService cartItemService;
 
     @PostMapping
@@ -43,7 +44,7 @@ class CartItemController {
         return BaseResponse.successOf(cartItemResponse);
     }
 
-    @GetMapping("/{cartId}")
+    @GetMapping("/cart/{cartId}")
     public BaseResponse<List<CartItemResponse>> getCartItemsByCartId(
             @PathVariable @Positive final Long cartId
     ) {
