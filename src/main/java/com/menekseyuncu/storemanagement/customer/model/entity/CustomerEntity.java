@@ -1,7 +1,7 @@
 package com.menekseyuncu.storemanagement.customer.model.entity;
 
 import com.menekseyuncu.storemanagement.cart.model.entity.CartEntity;
-import com.menekseyuncu.storemanagement.order.OrderEntity;
+import com.menekseyuncu.storemanagement.order.model.entity.OrderEntity;
 import com.menekseyuncu.storemanagement.common.model.BaseEntity;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
