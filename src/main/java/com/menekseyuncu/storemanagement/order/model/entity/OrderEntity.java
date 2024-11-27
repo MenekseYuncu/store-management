@@ -1,4 +1,5 @@
-package com.menekseyuncu.storemanagement.order;
+package com.menekseyuncu.storemanagement.order.model.entity;
+
 import com.menekseyuncu.storemanagement.common.model.BaseEntity;
 import com.menekseyuncu.storemanagement.customer.model.entity.CustomerEntity;
 import jakarta.persistence.Column;
@@ -39,6 +40,6 @@ public class OrderEntity extends BaseEntity {
     @Column(name = "total_price")
     private BigDecimal totalPrice;
 
-    //@OneToMany(mappedBy = "order")
-   // private List<OrderItemEntity> orderItems = new ArrayList<>();
+    @OneToMany(mappedBy = "order")
+    private List<OrderItemEntity> orderItems = new ArrayList<>();
 }
