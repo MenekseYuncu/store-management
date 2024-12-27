@@ -45,6 +45,7 @@ class ProductServiceImpl implements ProductService {
     public List<ProductResponse> getAllProducts() {
         return productRepository.findAllByDeletedAtIsNull().stream()
                 .map(product -> ProductResponse.builder()
+                        .id(product.getId())
                         .name(product.getName())
                         .price(product.getPrice())
                         .stock(product.getStock())

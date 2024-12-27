@@ -21,7 +21,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -51,7 +50,7 @@ public class OrderServiceImpl implements OrderService {
 
         return orderEntities.stream()
                 .map(this::mapToOrderResponse)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     private OrderResponse mapToOrderResponse(OrderEntity orderEntity) {
