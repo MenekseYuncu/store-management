@@ -12,8 +12,6 @@ public interface OrderItemRepository extends JpaRepository<OrderItemEntity, Long
 
     Optional<OrderItemEntity> findByOrderIdAndProductIdAndDeletedAtIsNull(Long orderId, Long productId);
 
-
-
     Optional<OrderItemEntity> findByOrderIdAndDeletedAtIsNull(Long orderId);
 
     List<OrderItemEntity> findAllByDeletedAtIsNull();

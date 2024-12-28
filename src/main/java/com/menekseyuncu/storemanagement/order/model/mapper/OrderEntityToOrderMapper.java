@@ -10,6 +10,5 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface OrderEntityToOrderMapper extends BaseMapper<OrderEntity, Order> {
 
-
     OrderEntityToOrderMapper INSTANCE = Mappers.getMapper(OrderEntityToOrderMapper.class);
 }
